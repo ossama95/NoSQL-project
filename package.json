@@ -1,7 +1,7 @@
 {
   "name": "nosql-project",
   "version": "1.0.0",
-  "description": "Nosql-project",
+  "description": "Simple Node.js Command Line Weather Application",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
