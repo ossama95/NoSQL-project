@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
+const client = require('./connection.js');
+
+
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,13 +26,41 @@ app.post('/', function (req, res) {
       if(result.hits.total == 0){
         res.render('index', {result:null,title:null,error: 'Error, please try again'});
       } else {
-        let title = result.hits.hits[0]._source.fields.text.title;
-        let dateline = result.hits.hits[0]._source.fields.text.dateline;
-        let body = result.hits.hits[0]._source.fields.text.body;
+        client.search({
+          index: 'reuters',
+          type: 'reuter',
+          body: {
+            "size": 2557,
+             "min_score": 0.5,
+             "query":
+             {
+               "bool":
+             {
+                 "should": [
+                   {"match":{"fields.text.dateline": "NEW YORK" }}
+                   ],
+                  "must_not": [
+                    {"match": {
+                      "fields.places": "usa"
+                    }}
+                  ]
+             }
+             }
+          }
+        },function (error, response,status) {
+            if (error){
+              console.log("search error: "+error)
+            }
+            else {
+              console.log("--- Response ---");
+              console.log(response);
+              console.log("--- Hits ---");
+              res.render('index', {result:response,error: null});
 
-        let place = result.hits.hits[0]._source.fields.places;
+            }
+        });
 
-        res.render('index', {title:title, result:result, dateline:dateline, body:body ,error: null});
+    //    res.render('index', {result:result,error: null});
       }
     }
   });

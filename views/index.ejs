@@ -13,7 +13,7 @@
           <input name="value" type="text" class="ghost-input" placeholder="What are you looking for ?" required>
           <input type="submit" class="ghost-button" value="Search">
         </form>
-        <% if(title !== null){ %>
+        <% if(result !== null){ %>
           <table>
               <% for(var i=0; i < result.hits.hits.length; i++) { %>
                <p id="title">
