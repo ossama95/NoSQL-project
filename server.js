@@ -13,8 +13,8 @@ app.get('/', function (req, res) {
 })
 
 app.post('/', function (req, res) {
-  let city = req.body.city;
-  let url = `http://localhost:9200/reuters/reuter/_search`
+  let value = req.body.value;
+  let url = `http://localhost:9200/reuters/reuter/_search?q=${value}`
 
   request(url, function (err, response, body) {
     if(err){
