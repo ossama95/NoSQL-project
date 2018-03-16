@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
-  res.render('index', {title:null ,error: null});
+  res.render('index', {result:null,title:null ,error: null});
 })
 
 app.post('/', function (req, res) {
@@ -21,7 +21,7 @@ app.post('/', function (req, res) {
     } else {
       let result = JSON.parse(body)
       if(result.hits.total == 0){
-        res.render('index', {title:null,error: 'Error, please try again'});
+        res.render('index', {result:null,title:null,error: 'Error, please try again'});
       } else {
         let title = result.hits.hits[0]._source.fields.text.title;
         let dateline = result.hits.hits[0]._source.fields.text.dateline;
@@ -29,7 +29,7 @@ app.post('/', function (req, res) {
 
         let place = result.hits.hits[0]._source.fields.places;
 
-        res.render('index', {title:title, dateline:dateline, body:body ,error: null});
+        res.render('index', {title:title, result:result, dateline:dateline, body:body ,error: null});
       }
     }
   });
