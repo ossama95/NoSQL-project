@@ -1,7 +1,7 @@
 {
   "name": "nosql-project",
   "version": "1.0.0",
-  "description": "Simple Node.js Command Line Weather Application",
+  "description": "Out project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bmorelli25/simple-nodejs-weather-app.git"
+    "url": "git+https://github.com/ossama95/NoSQL-project"
   },
-  "author": "brandon morelli",
+  "author": "Nous",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bmorelli25/simple-nodejs-weather-app/issues"
-  },
-  "homepage": "https://github.com/bmorelli25/simple-nodejs-weather-app#readme",
+  "homepage": "https://github.com/ossama95/NoSQL-project#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "ejs": "^2.5.7",
