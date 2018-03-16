@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
-const apiKey = '*****************';
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,13 +17,12 @@ app.post('/', function (req, res) {
 
   request(url, function (err, response, body) {
     if(err){
-      res.render('index', {weather: null, error: 'Error, please try again'});
+      res.render('index', {error: 'Error, please try again'});
     } else {
       let result = JSON.parse(body)
       if(result.hits.total == 0){
-        res.render('index', {weather: null, error: 'Error, please try again'});
+        res.render('index', {title:null,error: 'Error, please try again'});
       } else {
-        let weatherText = `It's ${result.hits.hits[0]._source.fields.places} degrees in!`;
         let title = result.hits.hits[0]._source.fields.text.title;
         let dateline = result.hits.hits[0]._source.fields.text.dateline;
         let body = result.hits.hits[0]._source.fields.text.body;
