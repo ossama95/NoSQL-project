@@ -10,9 +10,80 @@
     <div class="container">
       <fieldset>
         <form action="/" method="post">
-          <input name="value" type="text" class="ghost-input" placeholder="What are you looking for ?" required>
-          <input type="submit" class="ghost-button" value="Search">
-        </form>
+          <div class="container-contact100">
+		          <div class="wrap-contact100">
+			             <form class="contact100-form validate-form">
+
+
+        <span class="contact100-form-title">Search here !</span>
+
+				<div  class="wrap-input100 validate-input">
+					<span class="label-input100">Title</span>
+					<input class="input100" type="title" name="title" placeholder="Enter a specific title">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" >
+					<span class="label-input100">Topics</span>
+					<input class="input100" type="topics" name="topics" placeholder="Enter a specific topic">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Places</span>
+					<input class="input100" name="places" placeholder="Enter a specific place">
+					<span class="focus-input100"></span>
+				</div>
+
+        <div>
+          <div class="wrap-input100 validate-input">
+          <span class="label-input100">Text</span>
+          <input class="input100"name="value" type="text" placeholder="Enter words of the text" required>
+          <span class="focus-input100"></span>
+        </div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Date</span>
+					<input class="input100" name="date" placeholder="Enter a specific date">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Agg 1</span>
+					<div>
+						<select class="selection-2" name="agg1">
+							<option>None</option>
+							<option>Places</option>
+							<option>Topics</option>
+							<option>Date</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Agg2</span>
+					<div>
+						<select class="selection-2" name="agg2">
+							<option>None</option>
+							<option>Places</option>
+							<option>Topics</option>
+							<option>Date</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+        <div class="container-contact100-form-btn">
+        					<div class="wrap-contact100-form-btn">
+        						<div class="contact100-form-bgbtn"></div>
+        <input type="submit" class="ghost-button" value="Search">
+
+      </div>
+      </div>
+    </form>
+  </div>
+</div>
+
         <% if(result !== null){ %>
           <div>
               <% for(var i=0; i < result.hits.hits.length; i++) { %>
