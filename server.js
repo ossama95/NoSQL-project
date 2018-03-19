@@ -17,6 +17,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
 
     let value = req.body.value;
+
     client.search({
       index: 'reuters',
       type: 'reuter',
