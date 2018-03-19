@@ -16,8 +16,34 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
 
-    let value = req.body.value;
+    let text = req.body.text;
+    var should = [];
 
+    if(req.body.title != "")
+    {
+      var match = {};
+      match["match"] = {"fields.text.title": req.body.title};
+      should.push(match);
+    }
+    if(req.body.topics != "")
+    {
+      var match = {};
+      match["match"] = {"fields.topics": req.body.topics};
+      should.push(match);
+    }
+    if(req.body.text != "")
+    {
+      var match = {};
+      match["match"] = {"fields.text.body": req.body.text};
+      should.push(match);
+    }
+    if(req.body.places != "")
+    {
+      var match = {};
+      match["match"] = {"fields.places":  req.body.places};
+      should.push(match);
+    }
+console.log(should);
     client.search({
       index: 'reuters',
       type: 'reuter',
@@ -29,7 +55,7 @@ app.post('/', function (req, res) {
            "bool":
          {
              "should": [
-               {"match":{"fields.text.body": value }}
+               should
                ]
          }
 
@@ -37,12 +63,12 @@ app.post('/', function (req, res) {
       }
     },function (error, response,status) {
       if(error){
-        res.render('index', {error: 'Error, please try again'});
+        res.render('index', {result:null,error: 'Error, please try again'});
       } else {
         if(response.hits.total == 0){
-          res.render('index', {result:null,title:null,error: 'Error, please try again'});
+          res.render('index', {result:null,error:"Nothing has been found ..."});
         }
-          res.render('index', {result:response,error: null});
+          res.render('index', {result:response, error: null});
 
         }
     });

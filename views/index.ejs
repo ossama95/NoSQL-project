@@ -38,15 +38,10 @@
         <div>
           <div class="wrap-input100 validate-input">
           <span class="label-input100">Text</span>
-          <input class="input100"name="value" type="text" placeholder="Enter words of the text" required>
+          <input class="input100" name="text" type="text" placeholder="Enter words of the text" >
           <span class="focus-input100"></span>
         </div>
 
-				<div class="wrap-input100 validate-input">
-					<span class="label-input100">Date</span>
-					<input class="input100" name="date" placeholder="Enter a specific date">
-					<span class="focus-input100"></span>
-				</div>
 
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Agg 1</span>
@@ -84,29 +79,33 @@
   </div>
 </div>
 
-        <% if(result !== null){ %>
-          <div>
-              <% for(var i=0; i < result.hits.hits.length; i++) { %>
-               <p id="title">
 
-               <h1>  <%= result.hits.hits[i]._source.fields.text.title %> <h1>
-
-               </p>
-               <p  id="dateline"><%=  result.hits.hits[i]._source.fields.text.dateline %></p>
-               <p id="body">
-
-                 <%=  result.hits.hits[i]._source.fields.text.body %>
-
-               </p>
-              <% } %>
-        </div>
-
-        <% } %>
-
-        <% if(error !== null){ %>
-          <p><%= error %></p>
-        <% } %>
       </fieldset>
+
     </div>
+
+    <% if(result !== null){ %>
+      <% for(var i=0; i < result.hits.hits.length; i++) { %>
+      <div>
+
+           <p id="title">
+
+           <h1>  <%= result.hits.hits[i]._source.fields.text.title %> <h1>
+
+           </p>
+           <p  id="dateline"><%=  result.hits.hits[i]._source.fields.text.dateline %></p>
+           <p id="body">
+
+             <%=  result.hits.hits[i]._source.fields.text.body %>
+
+           </p>
+
+    </div>
+<% } %>
+    <% } %>
+
+    <% if(error !== null){ %>
+      <p><%= error %></p>
+    <% } %>
   </body>
 </html>
