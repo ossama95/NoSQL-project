@@ -9,6 +9,9 @@
   <body>
     <div class="container">
       <fieldset>
+        <% if(error !== null){ %>
+          <p><%= error %></p>
+        <% } %>
         <form action="/" method="post">
           <div class="container-contact100">
 		          <div class="wrap-contact100">
@@ -17,7 +20,7 @@
 
         <span class="contact100-form-title">Search here !</span>
 
-				<div  class="wrap-input100 validate-input">
+				<div  class="wrap-input100 validate-input" required>
 					<span class="label-input100">Title</span>
 					<input class="input100" type="title" name="title" placeholder="Enter a specific title">
 					<span class="focus-input100"></span>
@@ -48,9 +51,8 @@
 					<div>
 						<select class="selection-2" name="agg1">
 							<option>None</option>
-							<option>Places</option>
-							<option>Topics</option>
-							<option>Date</option>
+							<option>places</option>
+							<option>topics</option>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
@@ -61,9 +63,8 @@
 					<div>
 						<select class="selection-2" name="agg2">
 							<option>None</option>
-							<option>Places</option>
-							<option>Topics</option>
-							<option>Date</option>
+							<option>places</option>
+							<option>topics</option>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
@@ -104,8 +105,6 @@
 <% } %>
     <% } %>
 
-    <% if(error !== null){ %>
-      <p><%= error %></p>
-    <% } %>
+
   </body>
 </html>
