@@ -1,11 +1,22 @@
-# simple-nodejs-weather-app
-Simple Node.js Command Line Weather Application
+# Reuters Dataset
 
-* Check out the **[Live Demo](https://simple-nodejs-weather-app-irhhpddsku.now.sh/)**
-* Read the full tutorial on how to build this application at [codeburst.io](https://codeburst.io)
-* Run the web app locally:
+>NoSQL project
+
+- [Introduction](#introduction)
+- [Setup](#setup)
+
+## Introduction
+
+For our project, we have decides to create an app in Express. With our app we can make queries for the dataset **Reuters** index in Elasticsearch.s
+
+## Setup
+
+First of all, to launch the project we need a device with 'NodeJs' installed. You can install it [here](https://nodejs.org/en/)
+
+Then, we have to install all the packages required for the project. To achieved that use the following commands :
+
+* Install the packages :
+
+```js
+npm install
 ```
-node server.js
-// Now open your browser and visit: localhost:3000
-```
-![gif](https://github.com/bmorelli25/simple-nodejs-weather-app/blob/master/giphy.gif?raw=true 'website gif')
