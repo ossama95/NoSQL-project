@@ -22,7 +22,6 @@ app.post('/', function (req, res) {
    if(aggs!=null) console.log(aggs.group_by.aggs.theMax);
 
     client.search(search(should,aggs,res),function (error, response,status) {
-      console.log(should.length);
       if(should.length == 0)
       {
         res.render('index', {result:null,error: 'Please fill at least one input !'});
