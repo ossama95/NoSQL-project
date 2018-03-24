@@ -114,6 +114,7 @@
 
      <%} else { %>
 
+        <h2> Aggregate  : </h2>
         <% for(var i = 0 ; i < result.aggregations.group_by.buckets.length ; i++) {%>
           <div>
             <h1> <%= result.aggregations.group_by.buckets[i].key %> <h1>

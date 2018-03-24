@@ -4,6 +4,7 @@
 
 - [Introduction](#introduction)
 - [Setup](#setup)
+- [Description](#description)
 
 ## Introduction
 
@@ -20,3 +21,17 @@ Then, we have to install all the packages required for the project. To achieved 
 ```js
 npm install
 ```
+
+* Launch the app :
+
+- We need a device with 'ElasticSearch' installed. You can install it [here](https://www.elastic.co/fr/downloads/elasticsearch)
+
+- Then, launch ElasticSearch on localhost on port 9200.
+
+- After that, you can launch the app using the following command :
+
+```js
+node server.js
+```
+
+## Description
