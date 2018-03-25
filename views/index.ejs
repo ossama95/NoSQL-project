@@ -113,17 +113,59 @@
 <br></br>
                                        <% } %>
 
-
      <%} else { %>
 
-        <h2> Aggregate  : </h2>
-        <% for(var i = 0 ; i < result.aggregations.group_by.buckets.length ; i++) {%>
-          <div>
-            <h1> <%= result.aggregations.group_by.buckets[i].key %> <h1>
-          </div>
-      <%  } %>
+       <% if(combinaison == true) {%>
 
-     <% } %>
+
+          <% for(var i = 0 ; i < result.aggregations.group_by.buckets.length ; i++) {%>
+            <div class="article">
+            <% var res = result.aggregations.group_by.buckets[i].theMax.hits.hits[0] %>
+                <h4>  <%= res._source.fields.text.title %> <h4>
+
+
+             <p >
+               <%=  res._source.fields.text.dateline %>
+
+            <br></br>
+
+               <%=  res._source.fields.text.body %>
+
+             </p>
+
+      </div>
+      <br></br>
+         <%  } %>
+
+       <% } %>
+
+ <% if(combinaison == false) {%>
+
+    <h2> Aggregate  : </h2>
+    <% for(var i = 0 ; i < result.aggregations.group_by.buckets.length ; i++) {%>
+      <div class="article">
+        <h4> <%= result.aggregations.group_by.buckets[i].key %>  :  <%= result.aggregations.group_by.buckets[i].doc_count  %> articles <h1>
+      </div>
+   <%  } %>
+
+   <% } %>
+
+
+       <% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <% } %>
 

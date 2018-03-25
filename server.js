@@ -18,21 +18,21 @@ app.post('/', function (req, res) {
 
     var should = filter(req);
     var aggs =  agg(req);
-   if(aggs!=null) console.log(aggs);
-   if(aggs!=null) console.log(aggs.group_by.aggs.theMax);
+    var combinaison = false;
+    if(aggs != null && should.length != 0 )
+    {
+      combinaison = true;
+    }
+
 
     client.search(search(should,aggs,res),function (error, response,status) {
-      if(should.length == 0)
-      {
-        res.render('index', {result:null,error: 'Please fill at least one input !'});
-      }
-    else if(error){
+     if(error){
         res.render('index', {result:null,error: 'Error, please try again !'});
       } else {
         if(response.hits.total == 0){
           res.render('index', {result:null,error:"Nothing has been found ..."});
         }
-          res.render('index', {result:response, error: null});
+          res.render('index', {result:response, error: null,combinaison : combinaison});
 
         }
     });
@@ -47,11 +47,7 @@ app.listen(3000, function () {
 function search(filter,aggs, res)
 {
 
-  if(filter == [])
-  {
-    res.render('index', {result:null,error: 'Please fill at least one input !'});
-  }
-  else {
+
     if(aggs == null)
       {
              return {
@@ -72,7 +68,19 @@ function search(filter,aggs, res)
                }
           };
         }
+else if(agg != null && filter.length == 0 )
 
+{
+  return {
+    index: 'reuters',
+    type: 'reuter',
+    body: {
+      "size": 15,
+      "aggs":aggs
+    }
+};
+
+}
     else {
       return {
         index: 'reuters',
@@ -94,7 +102,7 @@ function search(filter,aggs, res)
    };
 
         }
-  }
+
 }
 
 function filter(req)
@@ -125,6 +133,7 @@ function filter(req)
     match["match"] = {"fields.places":  req.body.places};
     should.push(match);
   }
+
   return should;
 
 }
@@ -133,19 +142,18 @@ function filter(req)
 function agg(req)
 {
 
-   if(req.body.agg1 == "None" && req.body.agg2 == "None")
+   if(req.body.agg1 == "None" )
    {
      return null;
    }
 
    else {
 
-    if (req.body.agg1 != "None" && req.body.agg2 == "None") {
+    if (req.body.agg1 != "None" ) {
       var key = "fields." + req.body.agg1;
       var sort = {};
       sort[key] = {"order": "desc"};
-      console.log(sort);
-      console.log(key);
+
 
        var fieldkeyword = "fields." + req.body.agg1 +".keyword";
        var aggs =  {
@@ -167,11 +175,7 @@ function agg(req)
       return aggs;
         }
 
-    else if(req.body.agg1 == "None" && req.body.agg2 != "None")
-    {
 
-
-    }
 
    }
 
