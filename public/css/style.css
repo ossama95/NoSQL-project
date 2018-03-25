@@ -69,9 +69,32 @@ fieldset {
 .ghost-button:hover {
   /*border:2px solid #515151;*/
 }
-h1 {
-  color: #E64A19;
-  text-align: center;
+.article
+{
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #a64bf4;
+  background: -webkit-linear-gradient(45deg, #00dbde, #fc00ff);
+  background: -o-linear-gradient(45deg, #00dbde, #fc00ff);
+  background: -moz-linear-gradient(45deg, #00dbde, #fc00ff);
+  background: linear-gradient(45deg, #333, #03A9F4);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+h4 {
+  color: #FF5722;
+    font-family: 'Cardo', serif;
+    font-weight: normal;
+    font-style: italic;
+    letter-spacing: 0.1em;
 }
 p {
   color: #E64A19;
@@ -104,6 +127,7 @@ body, html {
   background-position: center bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
 }
 
 /*---------------------------------------------*/

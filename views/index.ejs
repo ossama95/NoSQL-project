@@ -94,21 +94,23 @@
       <% if(typeof(result.aggregations) == 'undefined' || result.aggregations == null){ %>
 
         <% for(var i=0; i < result.hits.hits.length; i++) { %>
-          <div>
+          <div class="article">
 
-            <p id="title">
 
-              <h1>  <%= result.hits.hits[i]._source.fields.text.title %> <h1>
+              <h4>  <%= result.hits.hits[i]._source.fields.text.title %> <h4>
 
-           </p>
-           <p  id="dateline"><%=  result.hits.hits[i]._source.fields.text.dateline %></p>
-           <p id="body">
+
+           <p >
+             <%=  result.hits.hits[i]._source.fields.text.dateline %>
+
+          <br></br>
 
              <%=  result.hits.hits[i]._source.fields.text.body %>
 
            </p>
 
     </div>
+<br></br>
                                        <% } %>
 
 
